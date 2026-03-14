@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Extract invoice fields, score field confidence, redact account data, and route uncertain fields to review.">
+  <title>Field Extract · Working Lab</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#results">Skip to results</a>
+  <header class="masthead"><a class="brand" href="https://github.com/apande20/fieldextract">Field Extract</a><span class="build-state"><i></i> live computation</span></header>
+  <main>
+    <section class="intro">
+      <p class="eyebrow">Document extraction router</p>
+      <h1>Run the decision,<br><em>inspect the evidence.</em></h1>
+      <p class="lede">Extract invoice fields, score field confidence, redact account data, and route uncertain fields to review.</p>
+    </section>
+    <section class="workspace" aria-label="Interactive project workspace">
+      <form id="workspace-form" class="control-panel">
+        <div class="panel-heading"><span>01</span><div><p>Inputs</p><h2>Configure the run</h2></div></div>
+        <div class="fields"><label class="field" for="document"><span>Invoice text</span><textarea id="document" name="document" rows="12">INVOICE INV-2048
+Supplier: Northstar Components
+Due date: 2026-10-15
+Total: $12,480.25
+Card: 4111 1111 1111 1111</textarea></label>
+<label class="field" for="supplierConfidence"><span>Supplier confidence</span><input id="supplierConfidence" name="supplierConfidence" type="number" value="0.98" min="0" max="1" step="any" data-suggested-step="0.01"></label>
+<label class="field" for="dateConfidence"><span>Date confidence</span><input id="dateConfidence" name="dateConfidence" type="number" value="0.87" min="0" max="1" step="any" data-suggested-step="0.01"></label>
+<label class="field" for="totalConfidence"><span>Total confidence</span><input id="totalConfidence" name="totalConfidence" type="number" value="0.96" min="0" max="1" step="any" data-suggested-step="0.01"></label>
+<label class="field" for="threshold"><span>Auto-accept threshold</span><input id="threshold" name="threshold" type="number" value="0.9" min="0" max="1" step="any" data-suggested-step="0.01"></label></div>
+        <div class="actions"><button class="run" type="submit">Run analysis <span>→</span></button><button id="reset-button" class="reset" type="button">Reset</button></div>
+      </form>
+      <section id="results" class="result-panel" aria-live="polite" aria-busy="true">
+        <div class="panel-heading"><span>02</span><div><p>Output</p><h2>Decision trace</h2></div></div>
+        <div id="result-content" class="result-content"><div class="loading">Computing initial scenario…</div></div>
+      </section>
+    </section>
+  </main>
+  <footer><p>Built from the tested logic in <a href="https://github.com/apande20/fieldextract">apande20/fieldextract</a>.</p></footer>
+  <script type="module" src="app.mjs"></script>
+</body>
+</html>
